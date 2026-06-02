@@ -1,0 +1,41 @@
+ID,name,author_ID,title,descr,genre_ID,stock,price,currency_code
+1,philosophers-stone,101,Harry Potter and the Philosopher's Stone,The first book in the Harry Potter series.,3,120,14.99,USD
+2,chamber-of-secrets,101,Harry Potter and the Chamber of Secrets,The second book in the Harry Potter series.,3,95,15.99,USD
+3,prisoner-of-azkaban,101,Harry Potter and the Prisoner of Azkaban,The third book in the Harry Potter series.,3,110,16.99,USD
+4,goblet-of-fire,101,Harry Potter and the Goblet of Fire,The fourth book in the Harry Potter series.,3,85,19.99,USD
+5,order-of-the-phoenix,101,Harry Potter and the Order of the Phoenix,The fifth book in the Harry Potter series.,3,70,21.99,USD
+6,half-blood-prince,101,Harry Potter and the Half-Blood Prince,The sixth book in the Harry Potter series.,3,65,21.99,USD
+7,deathly-hallows,101,Harry Potter and the Deathly Hallows,The seventh book in the Harry Potter series.,3,140,24.99,USD
+8,nineteen-eighty-four,102,1984,A dystopian social science fiction novel.,2,200,9.99,GBP
+9,animal-farm,102,Animal Farm,A satirical allegorical novella.,1,150,7.99,GBP
+10,the-hobbit,103,The Hobbit,A children's fantasy novel.,3,180,12.50,GBP
+11,fellowship-of-the-ring,103,The Fellowship of the Ring,Part 1 of The Lord of the Rings.,3,90,18.00,GBP
+12,the-two-towers,103,The Two Towers,Part 2 of The Lord of the Rings.,3,85,18.00,GBP
+13,return-of-the-king,103,The Return of the King,Part 3 of The Lord of the Rings.,3,95,18.00,GBP
+14,great-gatsby,104,The Great Gatsby,A story of the chaotic wealth of the Jazz Age.,1,60,10.99,USD
+15,pride-and-prejudice,105,Pride and Prejudice,A romantic novel of manners.,4,115,8.99,GBP
+16,sense-and-sensibility,105,Sense and Sensibility,The story of the Dashwood sisters.,4,45,9.50,GBP
+17,emma,105,Emma,A novel about youthful hubris and romantic misunderstandings.,4,50,8.99,GBP
+18,foundation,106,Foundation,The first novel in Asimov's epic Foundation series.,2,75,11.99,USD
+19,foundation-and-empire,106,Foundation and Empire,The second book of the Foundation series.,2,40,11.99,USD
+20,second-foundation,106,Second Foundation,The third book of the Foundation series.,2,42,11.99,USD
+21,i-robot,106,I, Robot,A collection of science fiction short stories.,2,88,10.50,USD
+22,murder-on-orient-express,107,Murder on the Orient Express,A famous Hercule Poirot mystery.,5,130,9.99,EUR
+23,death-on-the-nile,107,Death on the Nile,Poirot investigates a murder on a cruise.,5,90,9.99,EUR
+24,and-then-there-were-none,107,And Then There Were None,Ten strangers are lured to an isolated island.,5,210,10.99,EUR
+25,the-shining,108,The Shining,A horror novel centered around the Overlook Hotel.,5,95,14.95,USD
+26,it,108,It,A horror novel featuring Pennywise the Dancing Clown.,5,60,19.99,USD
+27,misery,108,Misery,A psychological horror thriller.,5,55,12.99,USD
+28,old-man-and-the-sea,109,The Old Man and the Sea,An epic battle between an old fisherman and a marlin.,1,80,11.00,USD
+29,for-whom-the-bell-tolls,109,For Whom the Bell Tolls,A story of Robert Jordan in the Spanish Civil War.,1,35,15.00,USD
+30,war-and-peace,110,War and Peace,A literary work chronicling the French invasion of Russia.,8,30,29.99,EUR
+31,anna-karenina,110,Anna Karenina,A tragic romance novel.,4,45,16.50,EUR
+32,hound-of-the-baskervilles,111,The Hound of the Baskervilles,A Sherlock Holmes crime novel.,5,110,8.99,GBP
+33,study-in-scarlet,111,A Study in Scarlet,The very first Sherlock Holmes story.,5,75,7.99,GBP
+34,norwegian-wood,112,Norwegian Wood,A nostalgic novel of loss and burgeoning sexuality.,1,65,14.00,USD
+35,kafka-on-the-shore,112,Kafka on the Shore,A metaphysical, magical realist novel.,3,58,15.99,USD
+36,steve-jobs,113,Steve Jobs,The exclusive biography of Steve Jobs.,7,40,21.00,USD
+37,einstein,113,Einstein: His Life and Universe,A comprehensive biography of Albert Einstein.,7,25,24.99,USD
+38,sapiens,114,Sapiens: A Brief History of Humankind,A book surveying the history of humankind.,8,190,22.00,USD
+39,homo-deus,114,Homo Deus: A Brief History of Tomorrow.,An examination of the future of humanity.,8,115,23.00,USD
+40,21-lessons,114,21 Lessons for the 21st Century,An investigation into today's most urgent questions.,6,85,20.00,USD
