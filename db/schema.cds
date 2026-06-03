@@ -11,6 +11,7 @@ entity Books: managed {
     stock  : Integer;
     price  : Decimal;
     currency : Currency;
+    shelf: Association to Shelvies;
 }
 
 entity Authors: managed {
@@ -28,3 +29,16 @@ entity Orders: cuid {
     quantity : Integer;
     book: Association to Books not null;
 }
+
+entity Shelvies: cuid, managed {
+    books: Association to many Books on books.shelf = $self
+}
+entity Users:cuid, managed {
+    firstName: String;
+    lastName: String;
+    @assert.format: '/^\S+@\S+\.\S+$/'
+    @assert.format.message: 'Provide a valid email Address'
+    email: String;
+}
+// type DayOfWeek : Number @assert.range: [1,7];?
+type Genre : String enum { Mystery; Fiction}

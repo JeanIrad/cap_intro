@@ -11,7 +11,9 @@ class CatlogService extends cds.ApplicationService {
       //   return [{ ID: 1, title: "Hello world" }];
       // });
     });
-
+    this.on("orderedBook", async function (req) {
+      console.log("THE BOOK WAS ORDERD BY XXXX");
+    });
     return super.init();
   }
 }

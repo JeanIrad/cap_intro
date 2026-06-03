@@ -9,6 +9,6 @@ service CatlogService @(odata:'/browse'){
  } excluding {
   createdBy, modifiedBy
  };
-
-
+@readonly entity Users as select from my.Users
+event orderedBook: {book: UUID; quantiity: Integer; buyer: Users:ID}
 }
