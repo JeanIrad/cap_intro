@@ -1,20 +1,17 @@
-const cds = require("@sap/cds");
-class CatlogService extends cds.ApplicationService {
-  init() {
-    // After READ handler on Books to add discount info
-    this.after("READ", "Books", (results) => {
-      console.log("results=======>", results);
-      //   results = results.map(result)
+const cds = require('@sap/cds');
+const { timestampLogger } = require('../utils');
 
-      results = results.push({ total: results.length });
-      // this.on("READ", "Books", (req) => {
-      //   return [{ ID: 1, title: "Hello world" }];
-      // });
+module.exports = class CatlogSerivice extends cds.ApplicationService {
+  init() {
+    this.on('orderedBook', async (payload) => {
+      console.log('Some payload after ordering book!');
     });
-    this.on("orderedBook", async function (req) {
-      console.log("THE BOOK WAS ORDERD BY XXXX");
+
+    this.before('READ', 'Books', async (req) => {
+      const now = req.timestamp;
+      await timestampLogger(now);
     });
+
     return super.init();
   }
-}
-module.exports = { CatlogService };
+};

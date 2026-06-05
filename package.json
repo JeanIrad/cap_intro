@@ -4,17 +4,23 @@
   "dependencies": {
     "@cap-js/hana": "^2",
     "@sap/cds": "^9",
-    "@sap/xssec": "^4"
+    "@sap/xssec": "^4",
+    "chalk": "^4.1.2"
   },
   "devDependencies": {
-    "@cap-js/sqlite": "^2.4"
+    "@cap-js/sqlite": "^2.4",
+    "cds-plugin-ui5": "^0.13.0"
   },
   "scripts": {
-    "start": "cds-serve"
+    "start": "cds-serve",
+    "watch-project1": "cds watch --open project1/index.html?sap-ui-xx-viewCache=false --livereload false"
   },
   "private": true,
   "cds": {
     "requires": {
+      "messaging": {
+        "kind": "local-messaging"
+      },
       "db": {
         "kind": "sqlite",
         "credentials": {
@@ -25,5 +31,11 @@
         "auth": "ias"
       }
     }
-  }
+  },
+  "workspaces": [
+    "app/*"
+  ],
+  "sapux": [
+    "app/project1"
+  ]
 }

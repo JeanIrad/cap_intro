@@ -5,6 +5,10 @@ service AdminService @(odata:'/admin'){
     entity Books as projection on my.Books;
     entity Genres as projection on my.Genres;
     entity Orders as projection on my.Orders;
+    @readonly entity StockAlerts as projection on my.StockAlerts;
+    
+    event LowStock : {book_ID: Integer; currentStock: Integer};
 
     action submitOrder (book_ID: Books:ID, quantity: Integer) returns {message: String};
+    event orderedBook: {book_ID: Books:ID; quantity: Integer};
 }

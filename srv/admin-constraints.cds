@@ -8,7 +8,12 @@ annotate AdminService.Books with {
     stock @assert.range: [(0), _];
 }
 
+// annotate AdminService.Books with @restrict: [
+//     {grant: 'READ', to: 'all'},
+//     {grant: 'DELETE', to: 'admin'},
+//     {grant: 'UPDATE', to: 'content-manager'},
+// ];
 annotate AdminService.Orders with{
     book @mandatory @assert.target;
-    quantity @assert.range: [1, _];
+    quantity @mandatory @assert.range: [1, _];
 }

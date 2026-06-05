@@ -6,9 +6,24 @@ service CatlogService @(odata:'/browse'){
   *,
   author.name as author,
   genre.name as genre,
+  reviews,
+//   reviews.ratingText as ratingText
+  
+
  } excluding {
   createdBy, modifiedBy
  };
-@readonly entity Users as select from my.Users
-event orderedBook: {book: UUID; quantiity: Integer; buyer: Users:ID}
+
+ @Capabilities: {Insertable: true, Updatable: true, Deletable: false}
+entity Reviews as projection on my.Reviews {
+    *,
+    book,
+    book.title as bookTitle,
+    case when rating <= 3 then 'bad'
+    when rating > 3 and rating < 7 then 'average'
+    else 'good' end as ratingText
+} excluding {
+    createdBy, modifiedBy
+};
+
 }

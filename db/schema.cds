@@ -12,6 +12,7 @@ entity Books: managed {
     price  : Decimal;
     currency : Currency;
     shelf: Association to Shelvies;
+    reviews: composition of many Reviews on reviews.book = $self;
 }
 
 entity Authors: managed {
@@ -25,20 +26,37 @@ Key ID: Integer;
 parent: Association to Genres
 }
 
-entity Orders: cuid {
-    quantity : Integer;
+entity Orders: cuid, managed {
+    
+    quantity : Integer not null;
     book: Association to Books not null;
+    orderDate: Timestamp default current_timestamp; 
+    status: OrderStatus default 'New';
+    currency: Currency;
+}
+
+entity StockAlerts: managed, cuid{
+    book_ID: Integer;
+    message: String;
+    resolved: Boolean default false;
 }
 
 entity Shelvies: cuid, managed {
     books: Association to many Books on books.shelf = $self
 }
-entity Users:cuid, managed {
-    firstName: String;
-    lastName: String;
-    @assert.format: '/^\S+@\S+\.\S+$/'
-    @assert.format.message: 'Provide a valid email Address'
-    email: String;
-}
+// entity Users:cuid, managed {
+//     firstName: String;
+//     lastName: String;
+//     @assert.format: '/^\S+@\S+\.\S+$/'
+//     @assert.format.message: 'Provide a valid email Address'
+//     email: String;
+// }
 // type DayOfWeek : Number @assert.range: [1,7];?
 type Genre : String enum { Mystery; Fiction}
+type OrderStatus : String enum { New; Processed; Shipped; Delivered; Cancelled }
+entity Reviews: cuid, managed {
+    rating: Integer;
+    ratingText: String;
+    comment: String;
+    book: Association to Books not null;
+}
