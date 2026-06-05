@@ -33,6 +33,7 @@ entity Orders: cuid, managed {
     orderDate: Timestamp default current_timestamp; 
     status: OrderStatus default 'New';
     currency: Currency;
+    TotalAmount: Decimal(10, 2)
 }
 
 entity StockAlerts: managed, cuid{

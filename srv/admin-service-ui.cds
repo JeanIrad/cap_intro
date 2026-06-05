@@ -1,4 +1,5 @@
-using { AdminService } from './admin-service';
+using { AdminService,  } from './admin-service';
+using {CatlogService} from './cat-service';
 
 annotate AdminService.Books with @(
 // Zone 1: The List Report Header and Search/Filter Bar
@@ -126,4 +127,74 @@ UI.LineItem: [
 ]
 
 
-)
+);
+
+
+annotate AdminService.Orders with @(
+
+UI.Chart: {
+    $Type: 'UI.ChartDefinitionType',
+    ChartType: #Bar,
+    Title: 'Revenue By Status',
+    Description: 'Total Order Amount grouped by Status',
+
+    Dimensions: [status],
+    DimensionAttributes: [
+        {
+            $Type: 'UI.ChartDimensionAttributeType',
+            Dimension: status,
+            Role: #Category
+        }
+    ],
+    Measures: [TotalAmount],
+    MeasureAttributes: [
+     {   
+        $Type: 'UI.ChartMeasureAttributeType',
+        Measure: TotalAmount,
+        Role: #Axis1
+     }
+    ]
+},
+  UI.DataPoint #TotalRevenue: {
+    Value:       TotalAmount,
+    Title:       'Total revenue',
+    TargetValue: 300000,
+    Criticality: #Positive
+  },
+    UI.SelectionPresentationVariant #Default: {
+    Text: 'Default',
+    SelectionVariant: {
+      $Type: 'UI.SelectionVariantType',
+      Text:  'Default',
+      SelectOptions: []
+    },
+    PresentationVariant: {
+      $Type:          'UI.PresentationVariantType',
+      Visualizations: [ '@UI.Chart', '@UI.LineItem' ]
+    }
+  },
+
+);
+
+
+annotate CatlogService.Reviews with @(
+    UI.HeaderInfo: {
+        TypeName      : 'Review',
+        TypeNamePlural: 'Reviews',
+        Title         : { Value: book.title },       
+        Description   : { Value: ratingText }
+        },
+    UI.SelectionFields: [
+        ID,
+        rating
+    ],
+
+    UI.LineItem: [
+        {Value: ID, Label: 'Review ID', $Type: 'UI.DataField'},
+        {Value: rating, Label: 'Rating', $Type: 'UI.DataField'},
+        {Value: ratingText, Label: 'Rating Text', $Type: 'UI.DataField'},
+        {Value: comment, Label: 'Comment', $Type: 'UI.DataField'},
+        {Value: book.title, Label: 'Book Title', $Type: 'UI.DataField'}
+    ]
+    
+);

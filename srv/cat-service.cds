@@ -26,4 +26,11 @@ entity Reviews as projection on my.Reviews {
     createdBy, modifiedBy
 };
 
+@readonly entity Orders as projection on my.Orders {
+    *,
+    book,
+    book.title as bookTitle
+} excluding {
+    createdBy, modifiedBy
+}
 }

@@ -5,17 +5,28 @@ class AdminService extends cds.ApplicationService {
   init() {
     this.on('submitOrder', async function (request) {
       try {
-        const { book_ID, quantity } = request.data;
+        const { book_ID, quantity, status } = request.data;
         const tx = cds.tx(request);
         const book = await tx.run(
           SELECT.one.from(Books).where({ ID: book_ID }),
         );
-        if (book.stock < quantity) request.reject(400, 'Out of stock!');
+        if (quantity <= 0)
+          throw new CustomError(400, 'Quantity must be greater than zero!');
+        if (book.stock < quantity)
+          throw new CustomError(400, 'Not enough stock available!');
         const newStock = book.stock - quantity;
         await tx.run(
           UPDATE(Books).set({ stock: newStock }).where({ ID: book_ID }),
         );
-        await tx.run(INSERT.into(Orders).entries({ book_ID, quantity }));
+        const totalAmount = book.price * quantity;
+        await tx.run(
+          INSERT.into(Orders).entries({
+            book_ID,
+            quantity,
+            totalAmount,
+            status,
+          }),
+        );
         // await new Promise((_, reject) => {
         //   setTimeout(
         //     () =>
@@ -32,16 +43,16 @@ class AdminService extends cds.ApplicationService {
           console.log(
             `[EMITTER] Stock for book ${book_ID} dropped to ${newStock}. Emitting LowStock event...`,
           );
-          request.on('succeeded', () => {
-            // This will only run AFTER the 'submitOrder' function returns
-            // and SQLite safely unlocks the database.
-            this.emit('LowStock', { book_ID: book_ID, currentStock: newStock });
-          });
+          // request.on('succeeded', () => {
+          // This will only run AFTER the 'submitOrder' function returns
+          // and SQLite safely unlocks the database.
+          // this.emit('LowStock', { book_ID: book_ID, currentStock: newStock });
+          // });
         }
-        this.emit('orderedBook', { book_ID, quantity });
-        console.log(
-          'Emitting orderedBook event to be caught in catalog service for checking and proving in-service communication!',
-        );
+        // this.emit('orderedBook', { book_ID, quantity });
+        // console.log(
+        //   'Emitting orderedBook event to be caught in catalog service for checking and proving in-service communication!',
+        // );
         return { message: 'Order placed successfully!' };
       } catch (error) {
         console.error('Error STACK processing order:', error.stack);
@@ -62,17 +73,34 @@ class AdminService extends cds.ApplicationService {
         });
       });
     });
-    this.before('CREATE', 'Orders', async (req) => {
-      // if(req.)
-      const { quantity, book_ID } = req.data;
-      const book = await SELECT.one
-        .from('sap.capire.bookshop.Books')
-        .where({ ID: book_ID });
-      if (!book) {
-        req.reject(400, "Book with such ID doesn't exist!");
+
+    this.before('READ', 'Orders', async (req) => {
+      try {
+        const orders = await SELECT.from(Orders);
+        console.log('Orders before READ:', orders);
+      } catch (error) {
+        console.error('Error STACK before reading orders:', error.stack);
+        req.reject(
+          error.statusCode || 500,
+          error.message || 'Internal Server Error during order retrieval',
+        );
       }
-      if (book.stock < quantity) {
-        req.reject(400, 'Insufficient stock!');
+    });
+    this.before('CREATE', 'Orders', async (req) => {
+      try {
+        const { quantity, book_ID } = req.data;
+        const book = await SELECT.one
+          .from('sap.capire.bookshop.Books')
+          .where({ ID: book_ID });
+        if (!book) throw new CustomError(404, 'Book not found!');
+        if (book.stock < quantity)
+          throw new CustomError(400, 'Not enough stock available!');
+      } catch (error) {
+        console.error('Error STACK validating order:', error.stack);
+        req.reject(
+          error.statusCode || 500,
+          error.message || 'Internal Server Error during order validation',
+        );
       }
     });
 
