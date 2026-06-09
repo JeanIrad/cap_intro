@@ -1,0 +1,11 @@
+ID;name;email;department;createdAt;createdBy;modifiedAt;modifiedBy
+e1000000-0000-0000-0000-000000000001;Alice Kamau;alice.kamau@company.com;Engineering;2024-01-01T08:00:00.000Z;admin;2024-01-01T08:00:00.000Z;admin
+e1000000-0000-0000-0000-000000000002;Brian Osei;brian.osei@company.com;Engineering;2024-01-01T08:00:00.000Z;admin;2024-01-01T08:00:00.000Z;admin
+e1000000-0000-0000-0000-000000000003;Clara Mwangi;clara.mwangi@company.com;Product;2024-01-01T08:00:00.000Z;admin;2024-01-01T08:00:00.000Z;admin
+e1000000-0000-0000-0000-000000000004;David Nkosi;david.nkosi@company.com;Finance;2024-01-01T08:00:00.000Z;admin;2024-01-01T08:00:00.000Z;admin
+e1000000-0000-0000-0000-000000000005;Esther Diallo;esther.diallo@company.com;HR;2024-01-01T08:00:00.000Z;admin;2024-01-01T08:00:00.000Z;admin
+e1000000-0000-0000-0000-000000000006;Frank Eze;frank.eze@company.com;IT;2024-01-01T08:00:00.000Z;admin;2024-01-01T08:00:00.000Z;admin
+e1000000-0000-0000-0000-000000000007;Grace Mensah;grace.mensah@company.com;IT;2024-01-01T08:00:00.000Z;admin;2024-01-01T08:00:00.000Z;admin
+e1000000-0000-0000-0000-000000000008;Henry Banda;henry.banda@company.com;Sales;2024-01-01T08:00:00.000Z;admin;2024-01-01T08:00:00.000Z;admin
+e1000000-0000-0000-0000-000000000009;Irene Touré;irene.toure@company.com;Marketing;2024-01-01T08:00:00.000Z;admin;2024-01-01T08:00:00.000Z;admin
+e1000000-0000-0000-0000-000000000010;James Chirwa;james.chirwa@company.com;Engineering;2024-01-01T08:00:00.000Z;admin;2024-01-01T08:00:00.000Z;admin

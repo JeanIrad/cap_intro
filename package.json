@@ -1,0 +1,62 @@
+{
+  "name": "it-assets",
+  "version": "1.0.0",
+  "dependencies": {
+    "@sap/cds": "^9",
+    "express-rate-limit": "^8.5.2"
+  },
+  "devDependencies": {
+    "@cap-js/sqlite": "^2.4",
+    "cds-plugin-ui5": "^0.13.0"
+  },
+  "scripts": {
+    "start": "cds-serve",
+    "watch-it-assets-management": "cds watch --open it.assets.management.itassetsmanagement/index.html?sap-ui-xx-viewCache=false --livereload false",
+    "watch-it.assets.management.alp": "cds watch --open it.assets.management.alp/index.html?sap-ui-xx-viewCache=false --livereload false"
+  },
+  "private": true,
+  "cds": {
+    "requires": {
+      "auth": {
+        "kind": "basic",
+        "users": {
+          "alice": {
+            "password": "alice",
+            "roles": [
+              "IT_Admin"
+            ]
+          },
+          "bob": {
+            "password": "employee",
+            "roles": [
+              "authenticated-user"
+            ]
+          },
+          "jean": {
+            "password": "employee",
+            "roles": [
+              "Employee"
+            ]
+          },
+          "maria": {
+            "password": "viewer",
+            "roles": [
+              "IT_Viewer"
+            ]
+          }
+        }
+      },
+      "db": {
+        "kind": "sqlite",
+        "url": "assets.sqlite"
+      }
+    }
+  },
+  "workspaces": [
+    "app/*"
+  ],
+  "sapux": [
+    "app/it-assets-management",
+    "app/it.assets.management.alp"
+  ]
+}

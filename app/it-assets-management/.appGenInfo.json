@@ -1,0 +1,28 @@
+{
+  "generationParameters": {
+    "generationDate": "Tue Jun 09 2026 15:05:29 GMT+0200 (Central Africa Time)",
+    "generatorPlatform": "Visual Studio Code",
+    "serviceType": "Local CAP",
+    "metadataFilename": "",
+    "serviceUrl": "http://localhost:4004/asset-management/",
+    "appName": "it-assets-management",
+    "appTitle": "IT Asset Management System",
+    "appDescription": "An SAP Fiori application.",
+    "appNamespace": "it.assets.management",
+    "ui5Theme": "sap_horizon",
+    "ui5Version": "1.148.1",
+    "enableEslint": true,
+    "enableTypeScript": false,
+    "showMockDataInfo": false,
+    "generatorVersion": "1.25.0",
+    "template": "List Report Page V4",
+    "generatorName": "SAP Fiori Application Generator",
+    "entityRelatedConfig": [
+      {
+        "type": "Main Entity",
+        "value": "Assets"
+      }
+    ],
+    "launchText": "To launch the generated app, start your CAP project:  and navigate to the following location in your browser:\n\nhttp://localhost:4004/it-assets-management/webapp/index.html"
+  }
+}

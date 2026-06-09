@@ -1,0 +1,79 @@
+@host = http://localhost:4004
+
+GET {{host}}/admin/Requests
+Authorization: Basic alice:admin123
+
+
+###
+ GET {{host}}/employees/Requests
+Authorization: Basic bob:employee
+
+
+###
+
+POST {{host}}/admin/HardwareTypes
+Authorization: Basic alice:admin123
+Content-Type: application/json
+
+{
+    "code": "MON_4K",
+    "name": "4K Ultra-HD Monitors",
+    "descr": "27-inch and 32-inch high-resolution desktop displays",
+    "parent_code": "DISP_DEV"
+}
+
+###
+
+GET {{host}}/admin/HardwareTypes?$count=true
+Authorization: Basic alice:alice
+
+###
+
+POST {{host}}/employees/Requests/cancelRequest
+Authorization: Basic bob:employee
+Content-Type: application/json
+Accept-Language: de
+
+{
+    "ID": "4bef9f43-0f4d-4ce7-bdc2-c2cebd21d396"
+}
+
+
+###
+
+POST {{host}}/admin/Assets
+Content-Type: application/json
+Authorization: Basic alice:admin123
+
+{
+"serialNumber": "SN-001",
+"model": "HUAWEI"
+}
+
+
+###
+GET {{host}}/asset-management/$metadata
+Authorization: Basic alice:admin
+
+###
+
+POST {{host}}/asset-management/Requests
+Content-Type: application/json
+Authorization: Basic jean:employee
+
+{
+  "justification": "Trying to play Games",
+  "requestedType_code": "MONITOR_4K",
+  "requestedBy_ID": "e1000000-0000-0000-0000-000000000001"
+}
+
+###
+
+GET {{host}}/asset-management/Requests?$count=true
+Authorization: Basic jean:employee
+
+
+###
+
+GET {{host}}/asset-management/Requests?$count=true
+Authorization: Basic YWxpY2U6YWxpY2U=

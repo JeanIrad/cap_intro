@@ -1,0 +1,21 @@
+code;name;descr;parent_code
+COMPUTE;Computing Devices;All computing hardware;
+LAPTOP;Laptop;Portable computers;COMPUTE
+DESKTOP;Desktop;Stationary workstations;COMPUTE
+
+LAPTOP_STD;Standard Laptop;General-purpose laptops;LAPTOP
+LAPTOP_DEV;Developer Laptop;High-performance laptops;LAPTOP
+LAPTOP_EXEC;Executive Laptop;Premium thin & light laptops;LAPTOP
+
+DISPLAY;Display & Monitors;All screen hardware;
+MONITOR_FHD;FHD Monitor;1080p monitors;DISPLAY
+MONITOR_4K;4K Monitor;Ultra-high definition monitors;DISPLAY
+
+PERIPHERAL;Peripherals;Input/output devices;
+KEYBOARD;Keyboard;External keyboards;PERIPHERAL
+MOUSE;Mouse;Pointing devices;PERIPHERAL
+HEADSET;Headset;Audio devices;PERIPHERAL
+
+NETWORK;Networking;Network equipment;
+SWITCH;Network Switch;Managed switches;NETWORK
+ROUTER;Router;Office routers;NETWORK
